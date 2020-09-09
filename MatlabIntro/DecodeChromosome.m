@@ -1,4 +1,4 @@
-function x = DecomposeChromosome(chromosome, variableRange)
+function x = DecodeChromosome(chromosome, variableRange)
             %transform binary to int?
     nGenes = size(chromosome, 2);
     nHalf = fix(nGenes/2);

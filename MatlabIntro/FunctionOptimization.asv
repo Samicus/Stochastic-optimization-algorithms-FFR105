@@ -1,33 +1,33 @@
- clear all;
-
- populationSize = 30;
- numberOfGenes = 40;
- crossoverProbability = 0.8;
- mutationProbability = 0.025;
-
- tournamentSelectionParameter = 0.75;
- variableRange = 3.0;
- numberOfGenerations = 100;
- fitness = zeros(populationSize,1);
-
- fitnessFigureHandle = figure;
- hold on;
- set(fitnessFigureHandle, 'Position', [50,50,500,200]);
- set(fitnessFigureHandle, 'DoubleBuffer','on');
- axis([1 numberOfGenerations 2.5 3]);
- bestPlotHandle = plot(1:numberOfGenerations,...
- zeros(1,numberOfGenerations));
- textHandle = text(30,2.6,sprintf('best: %4.3f',0.0));
- hold off;
- drawnow;
-
- surfaceFigureHandle = figure;
+1 clear all;
+2
+3 populationSize = 30;
+4 numberOfGenes = 40;
+5 crossoverProbability = 0.8;
+6 mutationProbability = 0.025;
+15
+7 tournamentSelectionParameter = 0.75;
+8 variableRange = 3.0;
+9 numberOfGenerations = 100;
+10 fitness = zeros(populationSize,1);
+11
+12 fitnessFigureHandle = figure;
+13 hold on;
+14 set(fitnessFigureHandle, 'Position', [50,50,500,200]);
+15 set(fitnessFigureHandle, 'DoubleBuffer','on');
+16 axis([1 numberOfGenerations 2.5 3]);
+17 bestPlotHandle = plot(1:numberOfGenerations,...
+18 zeros(1,numberOfGenerations));
+19 textHandle = text(30,2.6,sprintf('best: %4.3f',0.0));
+20 hold off;
+21 drawnow;
+22
+23 surfaceFigureHandle = figure;
  hold on;
  set(surfaceFigureHandle, 'DoubleBuffer','on');
  delta = 0.1;
  limit = fix(2*variableRange/delta) + 1;
- [xValues,yValues] = meshgrid(-variableRange:delta:variableRange,...
- -variableRange:delta:variableRange);
+ [xValues,yValues] = meshgrid(−variableRange:delta:variableRange,...
+ −variableRange:delta:variableRange);
  zValues = zeros(limit,limit);
  for j = 1:limit
  for k = 1:limit
@@ -38,7 +38,7 @@
  surfl(xValues,yValues,zValues)
  colormap gray;
  shading interp;
- view([-7 -9 10]);
+ view([−7 −9 10]);
  decodedPopulation = zeros(populationSize,2);
  populationPlotHandle = plot3(decodedPopulation(:,1), ...
  decodedPopulation(:,2),fitness(:),'kp');
