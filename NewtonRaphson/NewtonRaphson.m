@@ -1,16 +1,16 @@
-function xj_vector = NewtonRaphson(c_vec, start_p, tol)
+function xj_vector = NewtonRaphson(coefficientVector, startingPoint, tolerence)
 % this funcion takes the parameters ....
 i = 1;
-f_deriv1 = PolynomialDifferentiation(c_vec, 1);     % first derivate of f
-f_deriv2 = PolynomialDifferentiation(c_vec, 2);     % second derivative of f
+f_deriv1 = PolynomialDifferentiation(coefficientVector, 1);     % first derivate of f
+f_deriv2 = PolynomialDifferentiation(coefficientVector, 2);     % second derivative of f
 xj_vector = zeros(1,5);
 
-x_old = start_p;                                    % one iteration with the starting point
-x_new = NewtonRaphsonStep(start_p,f_deriv1, f_deriv2);
-xj_vector(1) = start_p;
+x_old = startingPoint;                                    % one iteration with the starting point
+x_new = NewtonRaphsonStep(startingPoint,f_deriv1, f_deriv2);
+xj_vector(1) = startingPoint;
 xj_vector(2) = x_new;
 
-while abs(x_new - x_old) >= tol
+while abs(x_new - x_old) >= tolerence
     i = i + 1;
     x_old = x_new;                     % update the old x value
     x_new = NewtonRaphsonStep(x_old, f_deriv1, f_deriv2);   
@@ -22,5 +22,6 @@ while abs(x_new - x_old) >= tol
         
     xj_vector(i) = x_new;              
 end
+
 xj_vector =  xj_vector(1:i);     % shrink vector 
 end
