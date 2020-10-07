@@ -83,7 +83,6 @@
      drawnow;
  end
 
- 
  format long;
  disp('xBest');
  disp(xBest);
