@@ -1,0 +1,3 @@
+function l = GetPathLength()
+
+end

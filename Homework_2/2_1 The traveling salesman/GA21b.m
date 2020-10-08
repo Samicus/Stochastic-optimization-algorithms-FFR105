@@ -56,13 +56,14 @@ connection = InitializeConnections(cityLocations);
      population = tempPopulation;
     
      if mod(iGeneration, 100) == 0
-         disp(iGeneration)
+         
+         disp("Generation: " + iGeneration)
      end
  end
 
  
- format long;
- disp('xBest');
+ format short;
+ disp('Shortest Path');
  disp(xBest);
  disp('Shortest path length');
 disp(1/maximumFitness);
