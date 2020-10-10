@@ -1,3 +1,0 @@
-function v = GetVisibility()
-
-end

@@ -3,7 +3,7 @@
 % Ant system (AS) for TSP.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+close all
 clear all;
 clc;
 
@@ -16,14 +16,14 @@ numberOfCities = length(cityLocation);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-numberOfAnts = 20;  % To do: Set to appropriate value.
+numberOfAnts = 40;  % To do: Set to appropriate value.
 alpha = 1.0;        % To do: Set to appropriate value.
 beta = 5.0;         % To do: Set to appropriate value.
 rho = 0.5;          % To do: set to appropriate value.
 
 % To do: Write the GetNearestNeighbourPathLength function
-% nearestNeighbourPathLength = GetNearestNeighbourPathLength(cityLocation); % To do: Write the GetNearestNeighbourPathLength function
-% tau0 = numberOfAnts/nearestNeighbourPathLength;
+nearestNeighbourPathLength = GetNearestNeighbourPathLength(cityLocation); % To do: Write the GetNearestNeighbourPathLength function
+tau0 = numberOfAnts/nearestNeighbourPathLength;
 
 targetPathLength = 123.0;
 
@@ -36,7 +36,6 @@ tspFigure = InitializeTspPlot(cityLocation, range);
 connection = InitializeConnections(cityLocation);
 pheromoneLevel = InitializePheromoneLevels(numberOfCities, tau0); % To do: Write the InitializePheromoneLevels
 visibility = GetVisibility(cityLocation);                         % To do: write the GetVisibility function
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Main loop
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,7 +63,6 @@ while (minimumPathLength > targetPathLength)
   pathCollection = [pathCollection; path];           
   pathLengthCollection = [pathLengthCollection; pathLength];
  end
-
  %%%%%%%%%%%%%%%%%%%%%%%%%%
  % Update pheromone levels
  %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,7 +71,8 @@ while (minimumPathLength > targetPathLength)
  pheromoneLevel = UpdatePheromoneLevels(pheromoneLevel,deltaPheromoneLevel,rho);          % To do: write the UpdatePheromoneLevels function
 
 end
-
+disp("Path: ")
+disp(path)
 
 
 

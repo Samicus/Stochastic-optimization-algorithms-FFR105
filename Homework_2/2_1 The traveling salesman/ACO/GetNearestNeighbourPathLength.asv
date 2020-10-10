@@ -1,0 +1,36 @@
+function pathLength = GetNearestNeighbourPathLength(cityLocations)
+
+nrOfCities = size(cityLocations,1);
+startingNode= randi(nrOfCities);
+tabuList = [startingNode];
+tabuList(1) = startingNode;
+pathDistance = zeros(nrOfCities-1, 2);
+currentNode = startingNode;
+path = zeros(1, nrOfCities);
+pathIndex = 1;
+
+while (size(tabuList,1) < 50)
+    path(1, pathIndex) = currentNode;
+    pathDistance = zeros(nrOfCities-1, 2);
+
+for i = 1:nrOfCities
+       visited = ismember(i, tabuList); %check if node has been visited
+       if visited == 0
+       pathDistance(i, 1) = PathLength([currentNode i] , cityLocations);
+       pathDistance(i, 2) = i;
+       else
+        pathDistance(i, 1) = inf;
+       end
+end
+ pathDistance(pathDistance==0) = inf; 
+ 
+ [length, nextNode]= min(pathDistance);
+ currentNode = nextNode;
+ pathIndex = pathIndex + 1;
+ tabuList(end + 1) = nextNode;
+ disp(currentNode)
+ disp("nextnode: " + nextNode(2))
+end
+pathLength = GetPathLength(path, cityLocations);
+
+end

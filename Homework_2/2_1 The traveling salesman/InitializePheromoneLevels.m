@@ -1,3 +1,0 @@
-function f = InitializePheromoneLevels()
-
-end
