@@ -58,6 +58,7 @@ connection = InitializeConnections(cityLocations);
      if mod(iGeneration, 100) == 0
          
          disp("Generation: " + iGeneration)
+         disp("path Length: " + 1/maximumFitness)
      end
  end
 

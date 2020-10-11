@@ -25,7 +25,7 @@ rho = 0.5;          % To do: set to appropriate value.
 nearestNeighbourPathLength = GetNearestNeighbourPathLength(cityLocation); % To do: Write the GetNearestNeighbourPathLength function
 tau0 = numberOfAnts/nearestNeighbourPathLength;
 
-targetPathLength = 123.0;
+targetPathLength = 117.0;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Initialization
@@ -58,6 +58,7 @@ while (minimumPathLength > targetPathLength)
   if (pathLength < minimumPathLength)
     minimumPathLength = pathLength;
     disp(sprintf('Iteration %d, ant %d: path length = %.5f',iIteration,k,minimumPathLength));
+    disp(path)
     PlotPath(connection,cityLocation,path);
   end
   pathCollection = [pathCollection; path];           
